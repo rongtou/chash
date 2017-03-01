@@ -50,24 +50,8 @@ hash_key(Key) ->
     <<A,B,C,D,_/binary>> = erlang:md5(Key),
     (D bsl 24) bor (C bsl 16) bor (B bsl 8) bor A.
 
-% gbtrees
-% iterator_from(S, {_, T}) ->
-%     iterator_1_from(S, T).
-
-% iterator_1_from(S, T) ->
-%     iterator_from(S, T, []).
-
-% iterator_from(S, {K, _, _, T}, As) when K < S ->
-%     iterator_from(S, T, As);
-% iterator_from(_, {_, _, nil, _} = T, As) ->
-%     [T | As];
-% iterator_from(S, {_, _, L, _} = T, As) ->
-%     iterator_from(S, L, [T | As]);
-% iterator_from(_, nil, As) ->
-%     As.
-
 % dict:to_list(lists:foldl(fun(I, Dict) -> 
-%     Node = chash:get_node(integer_to_list(I), Ring), 
+%     Node = hash_ring:get_node(integer_to_list(I), Ring1), 
 %     dict:update_counter(Node, 1, Dict) 
-% end, dict:new(), lists:seq(1, 100))).
+% end, dict:new(), lists:seq(1, 1000000))).
 
