@@ -62,9 +62,3 @@ get_node(Key, Ring) ->
 hash_key(Key) ->
     <<A,B,C,D,_/binary>> = erlang:md5(Key),
     (D bsl 24) bor (C bsl 16) bor (B bsl 8) bor A.
-
-% dict:to_list(lists:foldl(fun(I, Dict) -> 
-%     Node = hash_ring:get_node(integer_to_list(I), Ring1), 
-%     dict:update_counter(Node, 1, Dict) 
-% end, dict:new(), lists:seq(1, 1000000))).
-
