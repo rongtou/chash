@@ -30,4 +30,5 @@ test(TestNum, NodeNum) ->
         end, lists:seq(1, TestNum))
     end),
     io:format("calc ~w data on ~w nodes time cost: ~w~n", [TestNum, NodeNum, Time]),
-    io:format("distribution:~n~p~n~n", [[erlang:get(Node)||Node<-Nodes]]).
+    io:format("distribution:~n~w~n~n", [[erlang:get(Node)||Node<-Nodes]]),
+    [erlang:erase(Node)||Node<-Nodes].
